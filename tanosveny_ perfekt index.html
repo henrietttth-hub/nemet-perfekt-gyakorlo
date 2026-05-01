@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfekt – Übungsblatt</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff8f0; color: #333; padding: 16px; }
+  h1 { text-align: center; font-size: 2em; color: #b35c00; margin-bottom: 6px; font-style: italic; }
+  .intro { text-align: center; color: #666; margin-bottom: 24px; font-size: 0.95em; }
+  .section { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .section h2 { color: #c0392b; font-size: 1.1em; margin-bottom: 16px; border-bottom: 2px solid #f0e0d0; padding-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95em; }
+  th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+  th { background: #f5e6d3; color: #b35c00; }
+  td input[type="text"] { border: none; border-bottom: 2px solid #ccc; width: 100%; background: transparent; font-size: 0.95em; padding: 2px 4px; outline: none; }
+  td input[type="text"]:focus { border-bottom-color: #e67e22; }
+  .given { color: #555; font-style: italic; }
+  .row-group { display: flex; flex-direction: column; gap: 10px; }
+  .item-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .item-row label { min-width: 130px; font-weight: bold; }
+  .item-row input[type="text"] { border: none; border-bottom: 2px solid #ccc; flex: 1; min-width: 120px; font-size: 0.95em; padding: 2px 4px; background: transparent; outline: none; }
+  .item-row input:focus { border-bottom-color: #e67e22; }
+  .hat-ist-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .hat-ist-list li { display: flex; align-items: center; gap: 10px; }
+  .hat-ist-list li select { border: 1px solid #ccc; border-radius: 6px; padding: 4px 8px; font-size: 0.95em; background: #fafafa; }
+  .hat-ist-list li span { font-weight: bold; }
+  .partizip-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .partizip-item { display: flex; flex-direction: column; gap: 4px; min-width: 140px; flex: 1; }
+  .partizip-item label { font-size: 0.85em; color: #777; }
+  .partizip-item input { border: none; border-bottom: 2px solid #ccc; font-size: 0.95em; padding: 2px 4px; background: transparent; outline: none; width: 100%; }
+  .partizip-item input:focus { border-bottom-color: #e67e22; }
+  .korr-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .korr-list li { display: flex; flex-direction: column; gap: 4px; }
+  .korr-list li .original { font-size: 0.85em; color: #999; text-decoration: line-through; }
+  .korr-list li input { border: none; border-bottom: 2px solid #ccc; font-size: 0.95em; padding: 2px 4px; background: transparent; outline: none; width: 100%; max-width: 500px; }
+  .korr-list li input:focus { border-bottom-color: #e67e22; }
+  .perfekt-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .perfekt-list li { display: flex; flex-direction: column; gap: 4px; }
+  .perfekt-list li .original { font-size: 0.85em; color: #777; }
+  .perfekt-list li input { border: none; border-bottom: 2px solid #ccc; font-size: 0.95em; padding: 2px 4px; background: transparent; outline: none; width: 100%; max-width: 500px; }
+  .perfekt-list li input:focus { border-bottom-color: #e67e22; }
+  .check-btn { display: block; margin: 0 auto 30px; background: #e67e22; color: white; border: none; border-radius: 10px; padding: 14px 40px; font-size: 1.1em; cursor: pointer; transition: background 0.2s; }
+  .check-btn:hover { background: #d35400; }
+  .correct { background: #d4edda !important; border-bottom-color: #28a745 !important; color: #155724; }
+  .incorrect { background: #f8d7da !important; border-bottom-color: #dc3545 !important; color: #721c24; }
+  select.correct { background: #d4edda !important; }
+  select.incorrect { background: #f8d7da !important; }
+  .score { text-align: center; font-size: 1.2em; font-weight: bold; color: #b35c00; margin-bottom: 20px; }
+  @media (max-width: 600px) {
+    h1 { font-size: 1.5em; }
+    .partizip-item { min-width: 100px; }
+    .item-row label { min-width: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Perfekt</h1>
+<p class="intro">Löse alle Aufgaben und klicke dann auf „Ellenőrzés" (Überprüfen), um deine Antworten zu sehen.</p>
+
+<!-- AUFGABE 1: Tabelle ergänzen -->
+<div class="section">
+  <h2>1. Ergänzen Sie die Tabelle (Infinitiv ↔ Partizip II)</h2>
+  <table>
+    <tr><th>Infinitiv</th><th>Partizip II</th></tr>
+    <tr><td class="given">kochen</td><td><input type="text" id="t1" placeholder="Partizip II…"></td></tr>
+    <tr><td><input type="text" id="t2" placeholder="Infinitiv…"></td><td class="given">geturnt</td></tr>
+    <tr><td class="given">holen</td><td><input type="text" id="t3" placeholder="Partizip II…"></td></tr>
+    <tr><td class="given">bezahlen</td><td><input type="text" id="t4" placeholder="Partizip II…"></td></tr>
+    <tr><td><input type="text" id="t5" placeholder="Infinitiv…"></td><td class="given">eingekauft</td></tr>
+    <tr><td class="given">trainieren</td><td><input type="text" id="t6" placeholder="Partizip II…"></td></tr>
+    <tr><td class="given">zerstören</td><td><input type="text" id="t7" placeholder="Partizip II…"></td></tr>
+    <tr><td><input type="text" id="t8" placeholder="Infinitiv…"></td><td class="given">bestellt</td></tr>
+    <tr><td class="given">kaufen</td><td><input type="text" id="t9" placeholder="Partizip II…"></td></tr>
+    <tr><td class="given">malen</td><td><input type="text" id="t10" placeholder="Partizip II…"></td></tr>
+    <tr><td><input type="text" id="t11" placeholder="Infinitiv…"></td><td class="given">gerechnet</td></tr>
+    <tr><td><input type="text" id="t12" placeholder="Infinitiv…"></td><td class="given">gearbeitet</td></tr>
+    <tr><td class="given">suchen</td><td><input type="text" id="t13" placeholder="Partizip II…"></td></tr>
+    <tr><td class="given">basteln</td><td><input type="text" id="t14" placeholder="Partizip II…"></td></tr>
+    <tr><td><input type="text" id="t15" placeholder="Infinitiv…"></td><td class="given">gesurft</td></tr>
+  </table>
+</div>
+
+<!-- AUFGABE 2: Hat oder Ist -->
+<div class="section">
+  <h2>2. Hat oder Ist? Ergänzen Sie</h2>
+  <ul class="hat-ist-list">
+    <li><select id="hi1"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>eingeladen</span></li>
+    <li><select id="hi2"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>geschneit</span></li>
+    <li><select id="hi3"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>gestorben</span></li>
+    <li><select id="hi4"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>gesungen</span></li>
+    <li><select id="hi5"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>gelaufen</span></li>
+    <li><select id="hi6"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>gebaut</span></li>
+    <li><select id="hi7"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>geblieben</span></li>
+    <li><select id="hi8"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>gespielt</span></li>
+    <li><select id="hi9"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>gelernt</span></li>
+    <li><select id="hi10"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>umgezogen</span></li>
+    <li><select id="hi11"><option value="">–</option><option>Hat</option><option>Ist</option></select><span>gesagt</span></li>
+  </ul>
+</div>
+
+<!-- AUFGABE 3: Partizip II -->
+<div class="section">
+  <h2>3. Wie lautet das Partizip II?</h2>
+  <div class="partizip-grid">
+    <div class="partizip-item"><label>tauchen</label><input type="text" id="p1" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>baden</label><input type="text" id="p2" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>zerstören</label><input type="text" id="p3" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>gießen</label><input type="text" id="p4" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>einschlafen</label><input type="text" id="p5" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>fahren</label><input type="text" id="p6" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>werden</label><input type="text" id="p7" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>schlafen</label><input type="text" id="p8" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>gehen</label><input type="text" id="p9" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>tragen</label><input type="text" id="p10" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>sein</label><input type="text" id="p11" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>essen</label><input type="text" id="p12" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>springen</label><input type="text" id="p13" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>haben</label><input type="text" id="p14" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>trinken</label><input type="text" id="p15" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>bringen</label><input type="text" id="p16" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>aufstehen</label><input type="text" id="p17" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>brechen</label><input type="text" id="p18" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>waschen</label><input type="text" id="p19" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>schwimmen</label><input type="text" id="p20" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>verstehen</label><input type="text" id="p21" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>mieten</label><input type="text" id="p22" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>genießen</label><input type="text" id="p23" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>lesen</label><input type="text" id="p24" placeholder="Partizip II…"></div>
+    <div class="partizip-item"><label>schreiben</label><input type="text" id="p25" placeholder="Partizip II…"></div>
+  </div>
+</div>
+
+<!-- AUFGABE 4: Korrigieren Sie -->
+<div class="section">
+  <h2>4. Korrigieren Sie (javítsd ki a hibás mondatot)</h2>
+  <ul class="korr-list">
+    <li><span class="original">Wohin hast du gefahren?</span><input type="text" id="k1" placeholder="Helyes mondat…"></li>
+    <li><span class="original">Meine Mutter hat lange getelefoniert.</span><input type="text" id="k2" placeholder="Helyes mondat…"></li>
+    <li><span class="original">Gestern ist es geregnet.</span><input type="text" id="k3" placeholder="Helyes mondat…"></li>
+    <li><span class="original">Was hat hier gepassiert?</span><input type="text" id="k4" placeholder="Helyes mondat…"></li>
+    <li><span class="original">Ich habe eine Suppe gebestellt.</span><input type="text" id="k5" placeholder="Helyes mondat…"></li>
+    <li><span class="original">Ich habe meine Bücher mitbracht.</span><input type="text" id="k6" placeholder="Helyes mondat…"></li>
+  </ul>
+</div>
+
+<!-- AUFGABE 5: Perfekt -->
+<div class="section">
+  <h2>5. Schreiben Sie die Sätze im Perfekt</h2>
+  <ul class="perfekt-list">
+    <li><span class="original">Luise findet ihre Tasche nicht.</span><input type="text" id="pf1" placeholder="Im Perfekt…"></li>
+    <li><span class="original">Meine Oma bäckt das Brot.</span><input type="text" id="pf2" placeholder="Im Perfekt…"></li>
+    <li><span class="original">Nimmst du mich mit?</span><input type="text" id="pf3" placeholder="Im Perfekt…"></li>
+    <li><span class="original">Warum schreit ihr?</span><input type="text" id="pf4" placeholder="Im Perfekt…"></li>
+    <li><span class="original">Inge ruft Tobias an.</span><input type="text" id="pf5" placeholder="Im Perfekt…"></li>
+  </ul>
+</div>
+
+<div class="score" id="score"></div>
+<button class="check-btn" onclick="checkAll()">✔ Ellenőrzés</button>
+
+<script>
+function normalize(s) {
+  return s.trim().toLowerCase()
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss')
+    .replace(/\s+/g,' ');
+}
+function accept(input, answers) {
+  const v = normalize(input);
+  return answers.some(a => normalize(a) === v);
+}
+function markInput(id, ok) {
+  const el = document.getElementById(id);
+  el.classList.remove('correct','incorrect');
+  el.classList.add(ok ? 'correct' : 'incorrect');
+  return ok;
+}
+function markSelect(id, ok) {
+  const el = document.getElementById(id);
+  el.classList.remove('correct','incorrect');
+  el.classList.add(ok ? 'correct' : 'incorrect');
+  return ok;
+}
+
+// Answers
+const tabelle = {
+  t1:['gekocht'], t2:['turnen'], t3:['geholt'], t4:['bezahlt'],
+  t5:['einkaufen'], t6:['trainiert'], t7:['zerstört'], t8:['bestellen'],
+  t9:['gekauft'], t10:['gemalt'], t11:['rechnen'], t12:['arbeiten'],
+  t13:['gesucht'], t14:['gebastelt'], t15:['surfen']
+};
+const hatist = {
+  hi1:'Hat', hi2:'Hat', hi3:'Ist', hi4:'Hat',
+  hi5:'Ist', hi6:'Hat', hi7:'Ist', hi8:'Hat',
+  hi9:'Hat', hi10:'Ist', hi11:'Hat'
+};
+const partizip = {
+  p1:['getaucht'], p2:['gebadet'], p3:['zerstört'], p4:['gegossen'],
+  p5:['eingeschlafen'], p6:['gefahren'], p7:['geworden'],
+  p8:['geschlafen'], p9:['gegangen'], p10:['getragen'],
+  p11:['gewesen'], p12:['gegessen'], p13:['gesprungen'],
+  p14:['gehabt'], p15:['getrunken'], p16:['gebracht'],
+  p17:['aufgestanden'], p18:['gebrochen'], p19:['gewaschen'],
+  p20:['geschwommen'], p21:['verstanden'], p22:['gemietet'],
+  p23:['genossen'], p24:['gelesen'], p25:['geschrieben']
+};
+const korr = {
+  k1:['Wohin bist du gefahren?'],
+  k2:['Meine Mutter hat lange telefoniert.'],
+  k3:['Gestern hat es geregnet.'],
+  k4:['Was ist hier passiert?'],
+  k5:['Ich habe eine Suppe bestellt.'],
+  k6:['Ich habe meine Bücher mitgebracht.']
+};
+const perfekt = {
+  pf1:['Luise hat ihre Tasche nicht gefunden.'],
+  pf2:['Meine Oma hat das Brot gebacken.'],
+  pf3:['Hast du mich mitgenommen?'],
+  pf4:['Warum habt ihr geschrien?','Warum seid ihr geschrien?'],
+  pf5:['Inge hat Tobias angerufen.']
+};
+
+function checkAll() {
+  let correct = 0, total = 0;
+
+  // Tabelle
+  for (const [id, answers] of Object.entries(tabelle)) {
+    total++;
+    if (markInput(id, accept(document.getElementById(id).value, answers))) correct++;
+  }
+  // Hat/Ist
+  for (const [id, ans] of Object.entries(hatist)) {
+    total++;
+    const val = document.getElementById(id).value;
+    if (markSelect(id, val === ans)) correct++;
+  }
+  // Partizip
+  for (const [id, answers] of Object.entries(partizip)) {
+    total++;
+    if (markInput(id, accept(document.getElementById(id).value, answers))) correct++;
+  }
+  // Korrigieren
+  for (const [id, answers] of Object.entries(korr)) {
+    total++;
+    if (markInput(id, accept(document.getElementById(id).value, answers))) correct++;
+  }
+  // Perfekt
+  for (const [id, answers] of Object.entries(perfekt)) {
+    total++;
+    if (markInput(id, accept(document.getElementById(id).value, answers))) correct++;
+  }
+
+  document.getElementById('score').textContent =
+    `Eredmény: ${correct} / ${total} helyes válasz`;
+  document.getElementById('score').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
